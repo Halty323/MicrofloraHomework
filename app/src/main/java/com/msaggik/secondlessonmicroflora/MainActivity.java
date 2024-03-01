@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        output.setText("" + count);
         Toast.makeText(this, "Активность доступна для взаимодействия", Toast.LENGTH_SHORT).show();
     }
 
@@ -53,10 +54,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             // Восстановление данных из Bundle
+            Toast.makeText(this, "Восстановление данных", Toast.LENGTH_SHORT).show();
             count = savedInstanceState.getInt("count");
             preCount = savedInstanceState.getInt("preCount");
         } else {
             // Инициализация данных
+            Toast.makeText(this, "Инициализация данных", Toast.LENGTH_SHORT).show();
             count = 0;
             preCount = 0;
         }
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         // Сохранение данных в Bundle
+        Toast.makeText(this, "Сохранение данных в бандл", Toast.LENGTH_SHORT).show();
         outState.putInt("count", count);
         outState.putInt("preCount", preCount);
     }
