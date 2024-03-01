@@ -51,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (savedInstanceState != null) {
+            // Восстановление данных из Bundle
+            count = savedInstanceState.getInt("count");
+            preCount = savedInstanceState.getInt("preCount");
+        } else {
+            // Инициализация данных
+            count = 0;
+            preCount = 0;
+        }
+
         Toast.makeText(this, "Активность создана", Toast.LENGTH_SHORT).show();
 
         // привязка полей к разметке
@@ -59,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
         // обработка нажатия кнопки
         button.setOnClickListener(listener);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Сохранение данных в Bundle
+        outState.putInt("count", count);
+        outState.putInt("preCount", preCount);
     }
 
     // создание слушателя
